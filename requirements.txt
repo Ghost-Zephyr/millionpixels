@@ -1,0 +1,3 @@
+flask
+pypugjs
+gunicorn

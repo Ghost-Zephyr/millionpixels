@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  app:
+    build: .
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/million.conf
+    ports:
+      - 80:80

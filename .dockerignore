@@ -1,0 +1,6 @@
+__pycache__/
+Dockerfile
+docker-compose.yml
+dev-compose.yml
+nginx.conf
+.git
