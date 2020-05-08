@@ -1,1 +1,4 @@
-<html><body>You are being <a href="https://raw.githubusercontent.com/Ghost-Zephyr/millionpixels/master/README.md">redirected</a>.</body></html>
+# Million Pixels
+
+Million Dollar Homepage inpired web application projcet.
+
