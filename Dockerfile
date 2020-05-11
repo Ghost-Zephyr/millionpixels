@@ -1,7 +1,6 @@
-FROM alpine:latest
+FROM python:3.8-slim-buster
 
-RUN apk update &&\
- apk add python3 &&\
+RUN apt -y update && apt -y upgrade &&\
  pip3 install --upgrade pip &&\
  mkdir /opt/app
 

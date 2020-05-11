@@ -1,0 +1,40 @@
+
+body {
+  background-color: #333;
+  color: #56BA56;
+}
+a {
+  color: #5656DA;
+}
+
+#content {
+  margin: 4rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+#title {
+  margin: 2rem;
+}
+#pikk {
+  border: green 2px solid;
+  margin-top: 2vh;
+}
+
+#navbar > ul > li > a {
+  color: springgreen;
+}
+#navbar > ul > li > a:hover {
+  color: green;
+}
+li.right > ul {
+  align-content: right;
+}
+
+#footer {
+  padding-top: 1vh;
+}
+
+#form {
+  margin-right: 20%;
+  margin-left: 20%;
+}

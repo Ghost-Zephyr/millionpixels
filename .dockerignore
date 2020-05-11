@@ -1,4 +1,5 @@
 __pycache__/
+mongo/
 Dockerfile
 docker-compose.yml
 dev-compose.yml

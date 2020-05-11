@@ -1,18 +1,14 @@
 doctype html
 include mixins/head.pug
 html(lang='en')
-  head
-    +head(title)
+  +head(title)
   body
     include includes/navbar.pug
     #content
       .row
         .col-sm-9
-          h3 Cool picture here
+          h3 Good shit
         .col-sm-3
           ul
             li #[a lok]
-      center
-        canvas#pikk(width='1000' height='1000')
     include includes/footer.pug
-    script(src='/static/pikk.js')
