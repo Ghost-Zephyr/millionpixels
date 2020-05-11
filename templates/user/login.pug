@@ -1,9 +1,18 @@
-doctype html
-include mixins/head.pug
-html(lang='en')
-  +head(title)
-  body
-    include includes/navbar.pug
-    #content
-
-    include includes/footer.pug
+extends layout
+block content
+  #form
+    h3#title Login
+    form#loginForm(enctype='application/json')
+    .form-row
+      .col
+        label(for='nick') Nick
+        input.form-control(name='nick' id='nick' placeholder='Nickname' type='username' required)
+      .col
+        label(for='pwd') Password
+        input.form-control(name='pwd' id='pwd' placeholder='Password' type='password' required)
+    br
+    .form-group
+      button.btn.btn-primary(type='submit') Login
+block script
+  script(src='https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js')
+  script(src='/static/user.js')

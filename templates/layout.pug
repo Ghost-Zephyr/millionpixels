@@ -1,0 +1,29 @@
+doctype html
+html(lang='en')
+  head
+    title #{title} | Million Pixels
+    meta(charset='utf-8')
+    link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' crossorigin='anonymous')
+    link(href='/static/main.css' rel='stylesheet' type='text/css')
+    block head
+  body
+    nav#navbar.navbar.navbar-expand-sm.bg-dark.navbar-dark(id='navbar')
+      a.navbar-brand(href='/' style='color: springgreen') Million Pixels
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link(href='/about') About
+      ul.navbar-nav.ml-auto
+        if signedin
+          li.nav-item
+            a.nav-link.right(href='/profile') #{ token.nick }
+        else
+          li.nav-item
+            a.nav-link.right(href='/register') Register
+          li.nav-item
+            a.nav-link.right(href='/login') Login
+    block content
+    footer#footer
+      center
+        p Web app project inspired by the #[a(href='https://en.wikipedia.org/wiki/The_Million_Dollar_Homepage' target='_blank') million dollar homepage] inspired by
+        p Sivert V. Sæther og Julian Støver &#169; 2020
+    block script

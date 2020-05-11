@@ -41,10 +41,10 @@ def pikk():
   return routes.pikk()
 
 # - user stuff -
-@app.route('/api/user/register')
+@app.route('/api/user/register', methods=['POST'])
 def register():
   return routes.user.register(db)
-@app.route('/api/user/signin')
+@app.route('/api/user/signin', methods=['POST'])
 def signin():
   return routes.user.signin()
 @app.route('/api/user/logout')

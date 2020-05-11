@@ -1,4 +1,3 @@
-#from datetime import datetime, timedelta
 from flask import jsonify, redirect
 from authlib.jose import jwt
 from bcrypt import checkpw
@@ -40,7 +39,7 @@ def login(db):
       json = request.json
     else:
       json = request.form
-    p = db.p.find_one({ "nick": json['nick'] })
+    p = db.user.find_one({ "nick": json['nick'] })
     if checkpw(json['pwd'].encode('utf-8'), p['pwd']):
       token = createToken(db, json['nick'])
       res = jsonify('Token created.')
@@ -57,12 +56,10 @@ def login(db):
     return res
 
 def createToken(db, nick):
-  p = db.p.find_one({ 'nick': nick })
-  #exp = datetime.utcnow() + timedelta(days=7)
+  p = db.user.find_one({ 'nick': nick })
   token = jwt.encode({'alg': 'RS256'}, {
     'nick': p['nick'],
-    'admin': p['admin']#,
-  #  'exp': exp
+    'admin': p['admin']
   }, keypair['private'])
   return token
 

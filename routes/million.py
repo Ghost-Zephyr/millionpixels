@@ -2,7 +2,12 @@ from flask import render_template, jsonify
 from .jwt import get
 
 def index():
-  return render_template('index.pug', title='Home', token=get())
+  token = get()
+  if token:
+    signedin = True
+  else:
+    signedin = False
+  return render_template('index.pug', title='Home', token=token, signedin=signedin)
 
 def pikk():
   o = {}
