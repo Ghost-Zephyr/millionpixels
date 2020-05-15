@@ -38,10 +38,23 @@ def profile():
 def logout():
   return jwt.forntendLogout()
 
+# ----- Admin routes -----
+@app.route('/mastermind')
+def admin():
+  return routes.admin.panel(db)
+
+@app.route('/api/mastermind/<path>')
+def adminapi(path):
+  return routes.admin.mastermind(db, path)
+
 # ----- API -----
 @app.route('/pikk')
 def pikk():
   return routes.pikk()
+
+@app.route('/swag')
+def swag():
+  return routes.swag()
 
 # - user stuff -
 @app.route('/api/user/register', methods=['POST'])
@@ -60,4 +73,9 @@ def HTCPCPsupport():
   return routes.coffee()
 
 if __name__ == '__main__':
+  try:
+    from os import getenv
+    if getenv('FLASK_ENV') == 'development':
+      app.run(host='0.0.0.0', port=8000, debug=True)
+  except: pass
   app.run(host='0.0.0.0', port=8000)

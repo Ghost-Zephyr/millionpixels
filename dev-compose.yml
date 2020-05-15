@@ -5,6 +5,8 @@ services:
     volumes:
       - ./:/opt/app
     command: python3 server.py
+    environment:
+      - FLASK_ENV=development
     depends_on:
       - db
   nginx:

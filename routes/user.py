@@ -7,17 +7,17 @@ def profile():
   token = get()
   if not token:
     return redirect('/')
-  return render_template('user/profile.pug', title=f'{token["nick"]}\'s profile', token=token, signedin=True)
+  return render_template('user/profile.pug', title=f'{token["nick"]}\'s profile', token=token)
 def login():
   token = get()
   if token:
     return redirect('/')
-  return render_template('user/login.pug', title='Login', signedin=False)
+  return render_template('user/login.pug', title='Login')
 def registerhtml():
   token = get()
   if token:
     return redirect('/')
-  return render_template('user/register.pug', title='Register', signedin=False)
+  return render_template('user/register.pug', title='Register')
 
 # ----- register user and JWT -----
 def register(db):

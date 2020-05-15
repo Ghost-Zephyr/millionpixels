@@ -7,6 +7,6 @@ RUN apt -y update && apt -y upgrade &&\
 COPY . /opt/app
 WORKDIR /opt/app
 
-RUN pip3 install -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 CMD [ "gunicorn", "server:app", "-b", "0.0.0.0:8000", "-w", "1", "--threads", "4" ]

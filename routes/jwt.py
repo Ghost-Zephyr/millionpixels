@@ -4,7 +4,7 @@ from bcrypt import checkpw
 
 keypair = {}
 
-def set_keypair(keys): # TODO: lots of db stuff and the jwt
+def set_keypair(keys):
   keypair = {
     'private': keys[0],
     'public': keys[1]
@@ -63,6 +63,15 @@ def createToken(db, nick):
   }, keypair['private'])
   return token
 
+def get():
+  try:
+    dec = jwt.decode(request.cookies.get('jwt'), keypair['public'])
+    dec.validate()
+    return dec
+  except:
+    return False
+
+# --- logout funcs ---
 def apiLogout():
   res = jsonify('Logged out.')
   res.set_cookie('jwt', '', max_age=0)
@@ -73,11 +82,3 @@ def forntendLogout():
   res = redirect('/')
   res.set_cookie('jwt', '', max_age=0)
   return res
-
-def get():
-  try:
-    dec = jwt.decode(request.cookies.get('jwt'), keypair['public'])
-    dec.validate()
-    return dec
-  except:
-    return False
