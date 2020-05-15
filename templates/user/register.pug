@@ -1,21 +1,21 @@
 extends layout
 block content
   #form
-  h3#title Register
-  form#registerForm(enctype='application/json')
-    .form-group(style='width: 69%')
-      label(for='nick') Nick
-      input.form-control(name='nick' id='nick' placeholder='Nickname' type='username' required)
-    .form-row
-      .col
-        label(for='pwd') Password
-        input.form-control(name='pwd' id='pwd' placeholder='Password' type='password' required)
-      .col
-        label(for='pwd') Confirm password
-        input.form-control(name='pwd1' id='pwd1' placeholder='Password' type='password' required)
-    br
-    .form-group
-      button.btn.btn-primary(type='submit') Register
+    h3#title Register
+    form#registerForm(enctype='application/json')
+      .form-group
+        label(for='nick') Nick
+        input.form-control(name='nick' id='nick' placeholder='Nickname' type='username' required)
+      .form-row
+        .col
+          label(for='pwd') Password
+          input.form-control(name='pwd' id='pwd' placeholder='Password' type='password' required)
+        .col
+          label(for='pwd') Confirm password
+          input.form-control(name='pwd1' id='pwd1' placeholder='Password' type='password' required)
+      br
+      .form-group
+        button.btn.btn-primary(type='submit') Register
 block script
   script(src='https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js')
   script(src='/static/user.js')

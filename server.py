@@ -34,6 +34,9 @@ def registerhtml():
 @app.route('/profile')
 def profile():
   return routes.user.profile()
+@app.route('/logout')
+def logout():
+  return jwt.forntendLogout()
 
 # ----- API -----
 @app.route('/pikk')
@@ -46,10 +49,10 @@ def register():
   return routes.user.register(db)
 @app.route('/api/user/signin', methods=['POST'])
 def signin():
-  return routes.user.signin()
-@app.route('/api/user/logout')
-def logout():
-  return jwt.forntendLogout()
+  return jwt.login(db)
+@app.route('/api/user/signout')
+def signout():
+  return jwt.apiLogout()
 
 # --- Easter Egg ---
 @app.route("/coffee", methods=['BREW', 'POST'])

@@ -21,7 +21,7 @@ $("#registerForm").submit(function(event){
 $("#loginForm").submit(function(event){
 	event.preventDefault();
 	$.ajax({
-        url: "/api/user/login",
+        url: "/api/user/signin",
         type: "post",
         data: $(this).serialize(),
         statusCode: {

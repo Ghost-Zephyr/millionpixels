@@ -1,4 +1,4 @@
-from flask import jsonify, redirect
+from flask import jsonify, redirect, request
 from authlib.jose import jwt
 from bcrypt import checkpw
 

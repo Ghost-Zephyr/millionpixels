@@ -13,9 +13,9 @@ html(lang='en')
         li.nav-item
           a.nav-link(href='/about') About
       ul.navbar-nav.ml-auto
-        if signedin
+        if token
           li.nav-item
-            a.nav-link.right(href='/profile') #{ token.nick }
+            a.nav-link.right(href='/profile') #{token.nick}
         else
           li.nav-item
             a.nav-link.right(href='/register') Register

@@ -2,11 +2,12 @@ from flask import request, render_template, redirect, jsonify
 from bcrypt import hashpw, gensalt
 from .jwt import get, createToken
 
+# ----- Front end user Stuffs -----
 def profile():
   token = get()
   if not token:
     return redirect('/')
-  return render_template('user/profile.pug', title=f'{token.nick}\'s profile', token=token, signedin=True)
+  return render_template('user/profile.pug', title=f'{token["nick"]}\'s profile', token=token, signedin=True)
 def login():
   token = get()
   if token:
@@ -18,6 +19,7 @@ def registerhtml():
     return redirect('/')
   return render_template('user/register.pug', title='Register', signedin=False)
 
+# ----- register user and JWT -----
 def register(db):
   try:
     if request.json:
@@ -50,9 +52,4 @@ def register(db):
     res = jsonify('Could not create user.')
     res.status_code = 400
     return res
-
-def signin():
-  res = jsonify('get fucked')
-  res.status_code = 420
-  return res
 
