@@ -12,12 +12,12 @@ def login():
   token = get()
   if token:
     return redirect('/')
-  return render_template('user/login.pug', title='Login')
+  return render_template('user/login.pug', title='Login', token=token)
 def registerhtml():
   token = get()
   if token:
     return redirect('/')
-  return render_template('user/register.pug', title='Register')
+  return render_template('user/register.pug', title='Register', token=token)
 
 # ----- register user and JWT -----
 def register(db):

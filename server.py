@@ -41,17 +41,20 @@ def logout():
 # ----- Admin routes -----
 @app.route('/mastermind')
 def admin():
-  return routes.admin.panel(db)
+  return routes.admin.panel()
 
 @app.route('/api/mastermind/<path>')
 def adminapi(path):
   return routes.admin.mastermind(db, path)
 
+@app.route('/api/gen')
+def gen():
+  return routes.gen(db)
+
 # ----- API -----
 @app.route('/pikk')
 def pikk():
-  return routes.pikk()
-
+  return routes.pikk(db)
 @app.route('/swag')
 def swag():
   return routes.swag()

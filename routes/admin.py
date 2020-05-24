@@ -10,9 +10,9 @@ def panel():
   token = get()
   if not token['admin']:
     return r404()
-  return render_template('', title='Mastermind', token=token)
+  return render_template('admin/panel.pug', title='Mastermind', token=token)
 
-def mastermind(db, path):
+def mastermind(db, path='/'):
   token = get()
   if not token['admin']:
     return r404()
