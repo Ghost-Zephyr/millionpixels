@@ -69,7 +69,7 @@ def get():
     dec.validate()
     return dec
   except:
-    return False
+    return None
 
 # --- logout funcs ---
 def apiLogout():

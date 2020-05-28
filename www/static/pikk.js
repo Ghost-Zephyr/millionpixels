@@ -12,11 +12,16 @@ var draw = function() {
   }
 }
 
-var reloadPikk = function() {
-  var req = new XMLHttpRequest()
-  req.addEventListener('load', draw)
-  req.open('GET', '/pikk')
-  req.send()
+var reloadPikk = function() { // TODO: FIX, function only draws last for round
+  let reqarr = []
+  for (var i = 0; i < 1000; i++) {
+    reqarr[i] = new XMLHttpRequest()
+    reqarr[i].addEventListener('load', draw)
+  }
+  for (var i = 0; i < reqarr.length; i++) {
+    reqarr[i].open('GET', `/pikk/${i}`)
+    reqarr[i].send()
+  }
 }
 
 reloadPikk()

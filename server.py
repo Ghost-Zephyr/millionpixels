@@ -52,9 +52,9 @@ def gen():
   return routes.gen(db)
 
 # ----- API -----
-@app.route('/pikk')
-def pikk():
-  return routes.pikk(db)
+@app.route('/pikk/<path>')
+def pikk(path):
+  return routes.pikk(db, path)
 @app.route('/swag')
 def swag():
   return routes.swag()
