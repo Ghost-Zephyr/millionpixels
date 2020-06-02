@@ -16,15 +16,16 @@ app.debug = bool(getenv('DEBUG', False))
 '''
 
 app.config['MONGO_DBNAME'] = 'million'
-app.config['MONGO_URI'] = 'mongodb://db:27017/million'
+app.config['MONGO_URI'] = 'mongodb://mongo:27017/million'
 db = PyMongo(app).db
 
 # ----- Frontend routes -----
 @app.route('/')
 def index():
   return routes.index()
-#app.add_url_rule('/', 'index', routes.index())
-
+@app.route('/about')
+def about():
+  return routes.about()
 @app.route('/login')
 def login():
   return routes.user.login()

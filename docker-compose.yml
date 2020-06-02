@@ -4,7 +4,7 @@ services:
     build: .
     restart: always
     depends_on:
-      - db
+      - mongo
   nginx:
     image: nginx:latest
     restart: always
@@ -15,7 +15,7 @@ services:
       - 80:80
     depends_on:
       - app
-  db:
+  mongo:
     image: mongo:latest
     restart: always
     volumes:

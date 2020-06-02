@@ -12,7 +12,7 @@ var draw = function() {
   }
 }
 
-var reloadPikk = function() { // TODO: FIX, function only draws last for round
+var reloadPikk = function() {
   let reqarr = []
   for (var i = 0; i < 1000; i++) {
     reqarr[i] = new XMLHttpRequest()
@@ -25,16 +25,3 @@ var reloadPikk = function() { // TODO: FIX, function only draws last for round
 }
 
 reloadPikk()
-
-/*
-
-function draw() {
-  console.log(this.responseText)
-}
-
-var req = new XMLHttpRequest()
-req.addEventListener('load', draw)
-req.open('GET', '/pikk')
-req.send()
-
-*/

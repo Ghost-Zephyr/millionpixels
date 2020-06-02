@@ -39,17 +39,21 @@ def login(db):
       json = request.json
     else:
       json = request.form
-    p = db.user.find_one({ "nick": json['nick'] })
-    if checkpw(json['pwd'].encode('utf-8'), p['pwd']):
-      token = createToken(db, json['nick'])
-      res = jsonify('Token created.')
-      res.set_cookie('jwt', token, max_age=60*60*24*7)
-      res.status_code = 200
+    try:
+      p = db.user.find_one({ "nick": json['nick'] })
+    except:
+      res = jsonify('No such user!')
+      res.status_code = 401
       return res
-    else:
+    if not checkpw(json['pwd'].encode('utf-8'), p['pwd']):
       res = jsonify('Wrong password!')
       res.status_code = 401
       return res
+    token = createToken(db, json['nick'])
+    res = jsonify('Token created.')
+    res.set_cookie('jwt', token, max_age=60*60*24*7)
+    res.status_code = 200
+    return res
   except:
     res = jsonify('Request error.')
     res.status_code = 400

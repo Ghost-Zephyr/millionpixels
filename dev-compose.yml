@@ -8,7 +8,7 @@ services:
     environment:
       - FLASK_ENV=development
     depends_on:
-      - db
+      - mongo
   nginx:
     image: nginx:latest
     volumes:
@@ -18,7 +18,7 @@ services:
       - 8080:80
     depends_on:
       - app
-  db:
+  mongo:
     image: mongo:latest
     ports:
       - 27017:27017
