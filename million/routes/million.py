@@ -39,7 +39,7 @@ def pikk(path):
 
 @app.route('/api/pixel')
 def pixel():
-  try:
+#  try:
     if request.json:
       json = request.json
     else:
@@ -48,7 +48,7 @@ def pixel():
     res = jsonify({ 'x': pixel['x'], 'y': pixel['y'], 'color': pixel['color'], 'href': '/' })
     res.status_code = 200
     return res
-  except:
-    res = jsonify('Bad request.')
-    res.status_code = 400
-    return res
+#  except:
+#    res = jsonify('Bad request.')
+#    res.status_code = 400
+#    return res

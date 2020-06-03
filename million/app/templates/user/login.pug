@@ -1,4 +1,6 @@
 extends layout
+block head
+  include includes/jQuery.pug
 block content
   #form
     h3#title Login
@@ -14,5 +16,4 @@ block content
       .form-group
         button.btn.btn-primary(type='submit') Login
 block script
-  script(src='https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js')
   script(src='/static/user.js')
