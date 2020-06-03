@@ -48,9 +48,9 @@ def admin():
 def adminapi(path):
   return routes.admin.mastermind(db, path)
 
-@app.route('/api/gen')
-def gen():
-  return routes.gen(db)
+@app.route('/api/genpoc')
+def genpoc():
+  return routes.genpoc(db)
 
 # ----- API -----
 @app.route('/pikk/<path>')

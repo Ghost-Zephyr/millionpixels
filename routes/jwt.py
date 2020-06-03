@@ -63,7 +63,8 @@ def createToken(db, nick):
   p = db.user.find_one({ 'nick': nick })
   token = jwt.encode({'alg': 'RS256'}, {
     'nick': p['nick'],
-    'admin': p['admin']
+    'admin': p['admin'],
+    'superadmin': p['superadmin']
   }, keypair['private'])
   return token
 

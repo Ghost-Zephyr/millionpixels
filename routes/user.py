@@ -41,6 +41,7 @@ def register(db):
       'nick': json['nick'],
       'pwd': hashpw(json['pwd'].encode('utf-8'), gensalt()),
       'admin': False,
+      'superadmin': False,
       'stats': {}
     })
     token = createToken(db, json['nick'])

@@ -25,9 +25,29 @@ def pikk(db, path):
   res.status_code = 420
   return res
 
-def gen(db):
+def reset(db):
   token = get()
-  if not token['admin']:
+  if not token['superadmin']:
+    res = jsonify('Unauthorized.')
+    res.status_code = 401
+    return res
+  if db.pixels.count_documents({}) > 0:
+    db.pixels.delete_many({})
+  l = []
+  for i in range(0,1000):
+    for j in range(0,1000):
+      l.append({
+        'x': j, 'y': i,
+        'color': 'rgb(51, 51, 51)'
+      })
+  db.pixels.insert_many(l)
+  res = jsonify('Updated picture database.')
+  res.status_code = 200
+  return res
+
+def genpoc(db):
+  token = get()
+  if not token['superadmin']:
     res = jsonify('Unauthorized.')
     res.status_code = 401
     return res
