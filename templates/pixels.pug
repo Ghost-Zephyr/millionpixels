@@ -1,0 +1,27 @@
+extends layout
+block head
+  script(src='https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js')
+block content
+  #content
+    .row
+      .col-sm-8
+        h3 Set a specific pixel
+      .col-sm-4
+        h3 Get current pixel info:
+        form#getPixel(enctype='application/json')
+          .form-row
+            label Coords 0 to 999, x and y
+          .form-row
+            .col
+              label(for='x') X
+              input.form-control(name='x' id='x' placeholder='X value' required)
+            .col
+              label(for='y') y
+              input.form-control(name='y' id='y' placeholder='Y value' required)
+          br
+          .form-group
+            button.btn.btn-primary(type='submit') Get
+        #pixelinfo
+
+block script
+  script(src='/static/edits.js')

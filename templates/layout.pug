@@ -10,13 +10,16 @@ html(lang='en')
     nav#navbar.navbar.navbar-expand-sm.bg-dark.navbar-dark(id='navbar')
       a.navbar-brand(href='/' style='color: springgreen') Million Pixels
       ul.navbar-nav
+        if token
+          li.nav-item
+            a.nav-link(href='/pixels') Edit pixels
         li.nav-item
           a.nav-link(href='/about') About
       ul.navbar-nav.ml-auto
-        if token.admin
-          li.nav-item
-            a.nav-link.right(href='/mastermind') Admin shits
         if token
+          if token.admin
+            li.nav-item
+              a.nav-link.right(href='/mastermind') Admin shits
           li.nav-item
             a.nav-link.right(href='/profile') #{token.nick}
           li.nav-item

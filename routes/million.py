@@ -1,10 +1,27 @@
-from flask import render_template, jsonify
+from flask import request, render_template, jsonify
 from .jwt import get
 
 def index():
   return render_template('index.pug', title='Home', token=get())
 def about():
   return render_template('about.pug', title='About', token=get())
+def edits():
+  return render_template('pixels.pug', title='Edit pixels', token=get())
+
+def pixel(db):
+  try:
+    if request.json:
+      json = request.json
+    else:
+      json = request.form
+    pixel = db.pixels.find_one({ 'x': json['x'], 'y': json['y'] })
+    res = jsonify({ 'x': pixel['x'], 'y': pixel['y'], 'color': pixel['color'], 'href': '/' })
+    res.status_code = 200
+    return res
+  except:
+    res = jsonify('Bad request.')
+    res.status_code = 400
+    return res
 
 def pikk(db, path):
   try:
@@ -15,7 +32,7 @@ def pikk(db, path):
     res.status_code = 400
     return res
   pikk = []
-  for doc in db.poc.find({'y':n}):
+  for doc in db.pixels.find({'y':n}):
     pikk.append({
       'x': doc['x'],
       'y': doc['y'],

@@ -1,11 +1,11 @@
 $('#loginForm').submit(function(event){
-	event.preventDefault();
+	event.preventDefault()
 	$.ajax({
         url: '/api/user/signin',
         type: 'post',
         data: $(this).serialize(),
         statusCode: {
-            200: function() { window.location.replace('/'); },
+            200: function() { window.location.replace('/') },
             401: function() { $('#title').text('Wrong password!'); $('#title').attr('style', 'color: #C42069') },
             400: function() { $('#title').text('No such user.'); $('#title').attr('style', 'color: #C42069') }
         }
